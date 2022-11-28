@@ -8,17 +8,22 @@ class Program
         Console.WriteLine("Введите массив!");
         while (true)
         {
-            string inputArrStr = Console.ReadLine() ?? string.Empty;
+            string inputArrStr = Console.ReadLine();
             var inputArr = new List<string>(inputArrStr.Split(' '));
             var outputArr = CocoJambo(inputArr);
-            outputArr.ForEach(Console.WriteLine);
+            outputArr.ForEach(Print);
         }
+    }
+
+    public static void Print(long number)
+    {
+        Console.Write(number + " ");
     }
 
     public static List<long> CocoJambo(List<string> inputArr)
     {
         var outputArr = new List<long>();
-        foreach (var num in inputArr)
+        foreach (string num in inputArr)
         {
             if (IsInt(num) && !IsNegative(num))
             {
@@ -63,18 +68,6 @@ class Program
             return n * Fact(n - 1);
     }
 
-    public static int FindNumberOfDigits(double number)
-    {
-        string strNumber = number.ToString();
-        int index = strNumber.IndexOf(",");
-
-        int length = 0;
-        if (index > -1)
-        {
-            length = strNumber.Substring(index).Length - 1;
-        }
-        return length;
-    }
     public static int Round(double number)
     {
         number = Math.Abs(number);
