@@ -43,13 +43,13 @@
 
     public static bool CheckInput(string input)
     {
-        return input.Length > 0 && CheckInvalChars(input);
+        return input.Length > 0 && CheckInvalidChars(input);
     }
     
-    public static bool CheckInvalChars(string input)
+    public static bool CheckInvalidChars(string input)
     {
-        var listChars = new List<char>() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-' };
+        var listCorrectChars = new List<char>() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-' };
         var stringList = input.ToList();
-        return stringList.TrueForAll(ch => listChars.Contains(ch)); 
+        return stringList.TrueForAll(ch => listCorrectChars.Contains(ch)); 
     }
 }
