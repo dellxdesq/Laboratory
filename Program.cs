@@ -12,19 +12,19 @@
             input = Console.ReadLine();
             if (!CheckInput(input))
             {
-                Console.WriteLine("Invalid input - input must be integer number.");
+                Console.WriteLine("Некорректный ввод, число должно быть целочисленное!");
                 Console.ReadKey();
                 break;
             }
-            Console.WriteLine(FindSumOfDigitsInNumber(input));
+            Console.WriteLine(SumInNumber(input));
         }
     }
 
-    public static int FindSumOfDigitsInNumber(string input)
+    public static int SumInNumber(string input)
     {
         int extraNumbers = 48;
         int answer = 0;
-        DeleteMinus(ref input);
+        DelMinus(ref input);
         foreach (var ch in input)
         {
             answer += ch - extraNumbers;
@@ -32,7 +32,7 @@
         return answer;
     }
     
-    public static void DeleteMinus(ref string input)
+    public static void DelMinus(ref string input)
     {
         if (input.Contains("-"))
         {
@@ -43,13 +43,12 @@
 
     public static bool CheckInput(string input)
     {
-        return input.Length > 0 && CheckForWrongChars(input);
+        return input.Length > 0 && CheckInvalChars(input);
     }
-
     
-    public static bool CheckForWrongChars(string input)
+    public static bool CheckInvalChars(string input)
     {
-        var listChars = new List<char>() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-' }; //допустимые элементы
+        var listChars = new List<char>() { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-' };
         var stringList = input.ToList();
         return stringList.TrueForAll(ch => listChars.Contains(ch)); 
     }
